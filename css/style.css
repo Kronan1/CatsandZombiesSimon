@@ -1,0 +1,108 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+@media screen and (max-width: 1000px) {
+    .image {
+        width: 150px; /* Adjust the size for smaller screens */
+        height: 150px; /* Adjust the size for smaller screens */
+        background-image: url("../images/almedalen.jpg");
+    }
+    body{
+        background-color: black;
+    }
+}
+
+
+
+
+
+
+body{
+    background-color: #F6E9DC;
+    color: #4E4F4A;
+    border: 1px solid #e66053;
+    box-sizing: border-box;
+    min-height: 98vh;
+    
+}
+
+.game{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 20vh;
+}
+
+.button{
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 14px 24px;
+    border: none;
+    transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+    background: linear-gradient(to right, rgb(230, 96, 83) 0%, rgb(207, 86, 74) 50%, rgb(186, 77, 66) 100%);
+    color: #fff;
+    width: 100px;
+    margin-top: 5px;
+
+}
+
+.navButtons{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin: 2vw;
+}
+
+#left{
+    margin-right: 100px;
+}
+
+.board{
+    display: flex;
+    align-items: center;
+
+    font-family: 'Montserrat';
+    font-weight: 700;
+}
+
+.cell{
+    border: 2px solid #e66053;
+    text-align: center;
+    width: 5vw;
+    vertical-align: middle;
+    font-size: 4rem;
+    position: relative;
+    
+}
+
+tbody{
+    background-color: #F6E9DC;
+}
+
+.image{
+    align-items: center;
+    width: 30vw;
+    height: 46vh;
+    display: inline-flex;
+    background-size: cover;
+    background-position: cover;
+    border: 1px solid #e66053;
+}
+
+.image2{
+    align-items: end;
+    width: 10vw;
+    height: 20vh;
+}
+
+.description{
+    text-align: center;
+    padding-top: 10px;
+}
+

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombies and Cats</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="game" id="game">
+        <div  id="image">
+            <img src="" alt="" id="locationImg" class="image">
+        </div>
+        <p class="activity"></p>
+        <h3 class="title"></h3>
+        <p class="cheat"></p>
+
+        <div class="navButtons">
+            <input type="button" class="button" value="&#8593" id="up" onclick="movePlayer(id)">
+            <div class="xBtns">
+                <input type="button" value="&#8592" class="button" id="left" onclick="movePlayer(id)">
+                <input type="button" value="&#8594" class="button" id="right" onclick="movePlayer(id)">
+            </div>
+            <input type="button" value="&#8595" class="button" id="down" onclick="movePlayer(id)">
+        </div>
+
+        <table class="board" id="board">
+          
+        </table>
+
+    </div>
+
+    <div class="description">        <h1>test</h1>
+    </div>
+    <script src="script/script.js"></script>
+</body>
+
+</html>
