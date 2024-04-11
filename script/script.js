@@ -6,58 +6,66 @@ let positionX = 4
 let positionY = 0
 const fieldSize = 25
 let gameArray = []
+let health = 3
 const character = "&heartsuit;"
+let level = 0
+let catFound = false
+let zombieFound = false
 
 
 const locationArray = [
-    '../images/alleystreet.jpg',
-    '../images/asianhouse.jpg',
-    '../images/belemtower.jpg',
-    '../images/coolhouse.jpg',
-    '../images/eskilstuna.jpg',
-    '../images/graz.jpg',
-    '../images/moonlanding.jpg',
-    '../images/newyork.jpg',
-    '../images/newzealand.jpg',
-    '../images/osaka.jpg',
-    '../images/slovenia.jpg',
-    '../images/stockholm.jpg',
-    '../images/tribergwaterfall.jpg',
-    '../images/almedalen.jpg',
-    '../images/desert.jpg',
-    '../images/drottningholm.jpg',
-    '../images/forestpath.jpg',
-    '../images/gothenburg.jpg',
-    '../images/greatwallofchina.jpg',
-    '../images/junglepath.jpg',
-    '../images/tajmahal.jpg',
-    '../images/tivoli.jpg',
-    '../images/versailles.jpg',
-    '../images/yellowstone.jpg',
-    '../images/fuji.jpg'
+    { url: '../images/alleystreet.jpg', description: 'You find yourself in a picturesque alley, where every corner holds a story.' },
+    { url: '../images/asianhouse.jpg', description: "You're intrigued by the mystery of the old house, its weathered facade whispering tales of the past." },
+    { url: '../images/belemtower.jpg', description: "You're entranced by the timeless beauty of Belém Tower, standing proudly against the horizon." },
+    { url: '../images/coolhouse.jpg', description: "You're intrigued by the charm of the old house with the blue door, wondering about its stories." },
+    { url: '../images/eskilstuna.jpg', description: "You're in front of Eskilstuna City Hall, conveniently close to school" },
+    { url: '../images/graz.jpg', description: "You find yourself in the quaint courtyard of an old house, surrounded by history." },
+    { url: '../images/moonlanding.jpg', description: "You find yourself on the moon, surrounded by the vastness of space." },
+    { url: '../images/newyork.jpg', description: 'You stand in awe as the Manhattan Bridge looms above you, a symbol of urban majesty' },
+    { url: '../images/newzealand.jpg', description: 'A peculiar little house triggers a sense of déjà vu.' },
+    { url: '../images/osaka.jpg', description: "You're navigating through a narrow alleyway, surrounded by secrets waiting to be discovered." },
+    { url: '../images/slovenia.jpg', description: "You're standing at the harbor, where the scent of the sea fills the air." },
+    { url: '../images/stockholm.jpg', description: "You find yourself in the vibrant atmosphere of the blue subway station, surrounded by the hustle and bustle of the city." },
+    { url: '../images/tribergwaterfall.jpg', description: "You're enchanted by the tranquility of the small waterfall, its gentle cascade a soothing melody." },
+    { url: '../images/almedalen.jpg', description: "You're exploring the peaceful ambiance of Almedalen, enjoying its serene surroundings" },
+    { url: '../images/desert.jpg', description: "You're wandering through the vast desert expanse, surrounded by endless sands." },
+    { url: '../images/drottningholm.jpg', description: "You feel like royalty as you stroll through Drottningholm's majestic gardens" },
+    { url: '../images/forestpath.jpg', description: 'The sun shines brightly through the trees along the forest path.' },
+    { url: '../images/gothenburg.jpg', description: "Quick, move out of the way! You're blocking the pram's path!" },
+    { url: '../images/greatwallofchina.jpg', description: 'The Great Wall of China sprawls out before you, a breathtaking sight.' },
+    { url: '../images/junglepath.jpg', description: 'The jungle path appears almost enchanted, beckoning you forward with mystery.' },
+    { url: '../images/tajmahal.jpg', description: "You're captivated by the grandeur of the Taj Mahal, lost in its beauty." },
+    { url: '../images/tivoli.jpg', description: "You're swept away by the magic of Tivoli, immersed in its enchanting atmosphere." },
+    { url: '../images/versailles.jpg', description: "You're awestruck by the elegance of the walkways in Versailles, feeling like royalty as you stroll." },
+    { url: '../images/yellowstone.jpg', description: "You're spellbound by the spectacle of the Yellowstone geyser, marveling at its raw power" },
+    { url: '../images/fuji.jpg', description: "You're mesmerized by the majestic presence of Mount Fuji, feeling its grandeur towering above you" }
 ];
 
 
+init()
 
 
-
-createBoard();
-
-
-async function createBoard() {
+async function init(){
     await catApi()
 
+    addLocationsToBoard()
+    createBoard()
+}
+
+
+function createBoard() {
+    addZombiesAndCats()
     positionX = getRandomInt(5)
     positionY = getRandomInt(5)
 
-    addLocationsToBoard()
-    addZombiesAndCats()
     drawBoard()
 
-    let index = calculateIndex()
+    let index = calculateIndex(positionY, positionX)
     drawImage("locationImg", gameArray[index].img)
-
-    let test = 0;
+    updateDescription(gameArray[index].description)
+    updateHealth()
+    catFound = false
+    zombieFound = false
 }
 
 
@@ -90,9 +98,15 @@ function addLocationsToBoard() {
             currentNumber = getRandomInt(fieldSize)
         }
 
-        const locationToAdd = { position: currentNumber, img: locationArray[i], cat: "", zombie: "" }
+        const locationToAdd = 
+        { 
+            position: currentNumber, 
+            img: locationArray[i].url, 
+            description: locationArray[i].description, 
+            cat: "", 
+            zombie: "" 
+        }
         gameArray.push(locationToAdd)
-        console.log("Location added: " + locationToAdd)
 
     }
 
@@ -105,9 +119,18 @@ function getRandomInt(max) {
 
 
 function addZombiesAndCats() {
+    gameArray.forEach(element => {
+        if (element.cat != "") {
+            element.cat == ""
+        }
+        if (element.zombie != "") {
+            element.zombie == ""
+        }
+    });
+
     for (let zombie = 0; zombie < zombieAmount; zombie++) {
         let index = indexToAdd()
-        gameArray[index].zombie = "../images/zombie.jpg"
+        gameArray[index].zombie = "../images/zombie2.png"
         console.log("zombie added: " + gameArray[index].position)
     }
 
@@ -122,18 +145,40 @@ function addZombiesAndCats() {
 
 
 function indexToAdd() {
-    let currentNumber = getRandomInt(fieldSize)
 
-    while (gameArray.some(obj => obj.cat != "" && obj.zombie != "")) {
+    let currentNumber
+    let found = false;
+
+    while (!found) {
         currentNumber = getRandomInt(fieldSize)
+        const randomLocation = gameArray[currentNumber];
+        if (randomLocation.zombie === "" && randomLocation.cat === "") {
+            break
+        }
     }
-
     return currentNumber
 }
 
 
 function movePlayer(id){
     let oldId = "cell" + positionX.toString() + positionY.toString()
+
+    if(catFound){
+        
+
+        zombieAmount++
+        health++
+
+        document.getElementById("board").innerHTML = ""
+        document.getElementById("catOrZombieImg").style.visibility = "hidden"
+        
+        createBoard();
+        return
+    }
+
+    if(zombieFound){
+        document.getElementById("catOrZombieImg").style.visibility = "hidden"
+    }
 
     if (id == "up" && positionY > 0){
         positionY--
@@ -151,18 +196,11 @@ function movePlayer(id){
         return
     }
 
-    // Add logic to move player
     let index = calculateIndex()
 
-    drawImage("locationImg", gameArray[index].img)
+    updateDescription(gameArray[index].description)
 
-    if (hasZombieOrCat("cat")){
-        createImg(gameArray[index].cat)
-    }
-    
-    if (hasZombieOrCat("zombie")){
-        createImg(gameArray[index].zombie)
-    }
+    drawImage("locationImg", gameArray[index].img)
 
     
     let newId = "cell" + positionX.toString() + positionY.toString()
@@ -173,7 +211,19 @@ function movePlayer(id){
     let newCell = document.getElementById(newId)
     newCell.innerHTML = character
 
+    let image = document.getElementById("catOrZombieImg")
+    if (hasZombieOrCat("cat")){
+        drawImage("catOrZombieImg", gameArray[index].cat)
+        image.style.visibility = "visible"
+        document.getElementById("description").innerHTML = "You found the Cat! Press any button to continue"
+        catFoundFunc()
+    }
     
+    if (hasZombieOrCat("zombie")){
+        drawImage("catOrZombieImg", gameArray[index].zombie)
+        image.style.visibility = "visible"
+        zombieFoundFunc()
+    }
 
 }
 
@@ -195,6 +245,7 @@ function drawBoard(){
                 data.innerHTML = character
             }
 
+
             let cellId = column.toString() + row.toString()
             data.setAttribute("id", "cell" + cellId)
             tRow.appendChild(data)
@@ -204,6 +255,7 @@ function drawBoard(){
 
     let table = document.getElementById("board")
     table.appendChild(tBody)
+
 }
 
 
@@ -225,17 +277,57 @@ function drawImage(id, source){
 }
 
 
-function createImg(url){
-
-    // Not implemented
-    let img = document.createElement("img")
-    img.setAttribute("src", url)
-}
-
-
 function calculateIndex(){
     let position = positionY * 5 + positionX
     let index = gameArray.findIndex(obj => obj.position === position)
 
     return index
+}
+
+
+function updateDescription(description){
+    document.getElementById("description").innerHTML = description
+}
+
+
+function updateHealth(){
+    let lives = ""
+    for (let i = 0; i < health; i++) {
+        lives += "&#10084;"
+    }
+
+    document.getElementById("life").innerHTML = lives
+}
+
+
+function catFoundFunc(){
+    level++
+
+    if (level === 3){
+        const game = document.getElementById("game")
+        game.innerHTML = ""
+        document.getElementById("description").innerHTML = "You won!"
+    }
+
+    catFound = true
+}
+
+
+function zombieFoundFunc(){
+    zombieFound = true
+    health--
+
+    if (health === 0){
+        death()
+    }
+
+    updateHealth()
+}
+
+function death(){
+    
+    const game = document.getElementById("game")
+    game.innerHTML = ""
+    document.getElementById("description").innerHTML = "You died"
+    
 }

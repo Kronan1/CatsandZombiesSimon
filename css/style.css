@@ -1,19 +1,4 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-@media screen and (max-width: 1000px) {
-    .image {
-        width: 150px; /* Adjust the size for smaller screens */
-        height: 150px; /* Adjust the size for smaller screens */
-        background-image: url("../images/almedalen.jpg");
-    }
-    body{
-        background-color: black;
-    }
-}
-
-
-
-
-
 
 body{
     background-color: #F6E9DC;
@@ -30,7 +15,7 @@ body{
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding-top: 20vh;
+    padding-top: 10vh;
 }
 
 .button{
@@ -50,6 +35,7 @@ body{
     margin-top: 5px;
 
 }
+
 
 .navButtons{
     display: flex;
@@ -85,7 +71,7 @@ tbody{
     background-color: #F6E9DC;
 }
 
-.image{
+.locationImg{
     align-items: center;
     width: 30vw;
     height: 46vh;
@@ -95,14 +81,36 @@ tbody{
     border: 1px solid #e66053;
 }
 
-.image2{
-    align-items: end;
-    width: 10vw;
-    height: 20vh;
+.catOrZombieImg{
+    position: absolute;
+    top: 24vh;
+    left: 12vw;
+    width: 100px;
+    height: 200px;
+    visibility: hidden;
+}
+
+.endImg{
+    align-items: center;
+    width: 30vw;
+    height: 46vh;
+    background-size: cover;
+    background-position: cover;
+}
+
+.images{
+    position: relative;
 }
 
 .description{
     text-align: center;
-    padding-top: 10px;
+    padding-top: 20px;
 }
 
+.life{
+    font-size: 50px;
+    text-align: center;
+    color: #e66053;;
+    padding-left: 30px;
+    margin: 0;
+}
