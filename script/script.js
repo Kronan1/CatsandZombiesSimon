@@ -123,10 +123,10 @@ function getRandomInt(max) {
 function addZombiesAndCats() {
     gameArray.forEach(element => {
         if (element.cat != "") {
-            element.cat == ""
+            element.cat = ""
         }
         if (element.zombie != "") {
-            element.zombie == ""
+            element.zombie = ""
         }
     });
 
