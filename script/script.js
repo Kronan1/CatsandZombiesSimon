@@ -14,31 +14,31 @@ let zombieFound = false
 
 
 const locationArray = [
-    { url: '../images/alleystreet.jpg', description: 'You find yourself in a picturesque alley, where every corner holds a story.' },
-    { url: '../images/asianhouse.jpg', description: "You're intrigued by the mystery of the old house, its weathered facade whispering tales of the past." },
-    { url: '../images/belemtower.jpg', description: "You're entranced by the timeless beauty of Belém Tower, standing proudly against the horizon." },
-    { url: '../images/coolhouse.jpg', description: "You're intrigued by the charm of the old house with the blue door, wondering about its stories." },
-    { url: '../images/eskilstuna.jpg', description: "You're in front of Eskilstuna City Hall, conveniently close to school" },
-    { url: '../images/graz.jpg', description: "You find yourself in the quaint courtyard of an old house, surrounded by history." },
-    { url: '../images/moonlanding.jpg', description: "You find yourself on the moon, surrounded by the vastness of space." },
-    { url: '../images/newyork.jpg', description: 'You stand in awe as the Manhattan Bridge looms above you, a symbol of urban majesty' },
-    { url: '../images/newzealand.jpg', description: 'A peculiar little house triggers a sense of déjà vu.' },
-    { url: '../images/osaka.jpg', description: "You're navigating through a narrow alleyway, surrounded by secrets waiting to be discovered." },
-    { url: '../images/slovenia.jpg', description: "You're standing at the harbor, where the scent of the sea fills the air." },
-    { url: '../images/stockholm.jpg', description: "You find yourself in the vibrant atmosphere of the blue subway station, surrounded by the hustle and bustle of the city." },
-    { url: '../images/tribergwaterfall.jpg', description: "You're enchanted by the tranquility of the small waterfall, its gentle cascade a soothing melody." },
-    { url: '../images/almedalen.jpg', description: "You're exploring the peaceful ambiance of Almedalen, enjoying its serene surroundings" },
-    { url: '../images/desert.jpg', description: "You're wandering through the vast desert expanse, surrounded by endless sands." },
-    { url: '../images/drottningholm.jpg', description: "You feel like royalty as you stroll through Drottningholm's majestic gardens" },
-    { url: '../images/forestpath.jpg', description: 'The sun shines brightly through the trees along the forest path.' },
-    { url: '../images/gothenburg.jpg', description: "Quick, move out of the way! You're blocking the pram's path!" },
-    { url: '../images/greatwallofchina.jpg', description: 'The Great Wall of China sprawls out before you, a breathtaking sight.' },
-    { url: '../images/junglepath.jpg', description: 'The jungle path appears almost enchanted, beckoning you forward with mystery.' },
-    { url: '../images/tajmahal.jpg', description: "You're captivated by the grandeur of the Taj Mahal, lost in its beauty." },
-    { url: '../images/tivoli.jpg', description: "You're swept away by the magic of Tivoli, immersed in its enchanting atmosphere." },
-    { url: '../images/versailles.jpg', description: "You're awestruck by the elegance of the walkways in Versailles, feeling like royalty as you stroll." },
-    { url: '../images/yellowstone.jpg', description: "You're spellbound by the spectacle of the Yellowstone geyser, marveling at its raw power" },
-    { url: '../images/fuji.jpg', description: "You're mesmerized by the majestic presence of Mount Fuji, feeling its grandeur towering above you" }
+    { url: './images/alleystreet.jpg', description: 'You find yourself in a picturesque alley, where every corner holds a story.' },
+    { url: './images/asianhouse.jpg', description: "You're intrigued by the mystery of the old house, its weathered facade whispering tales of the past." },
+    { url: './images/belemtower.jpg', description: "You're entranced by the timeless beauty of Belém Tower, standing proudly against the horizon." },
+    { url: './images/coolhouse.jpg', description: "You're intrigued by the charm of the old house with the blue door, wondering about its stories." },
+    { url: './images/eskilstuna.jpg', description: "You're in front of Eskilstuna City Hall, conveniently close to school" },
+    { url: './images/graz.jpg', description: "You find yourself in the quaint courtyard of an old house, surrounded by history." },
+    { url: './images/moonlanding.jpg', description: "You find yourself on the moon, surrounded by the vastness of space." },
+    { url: './images/newyork.jpg', description: 'You stand in awe as the Manhattan Bridge looms above you, a symbol of urban majesty' },
+    { url: './images/newzealand.jpg', description: 'A peculiar little house triggers a sense of déjà vu.' },
+    { url: './images/osaka.jpg', description: "You're navigating through a narrow alleyway, surrounded by secrets waiting to be discovered." },
+    { url: './images/slovenia.jpg', description: "You're standing at the harbor, where the scent of the sea fills the air." },
+    { url: './images/stockholm.jpg', description: "You find yourself in the vibrant atmosphere of the blue subway station, surrounded by the hustle and bustle of the city." },
+    { url: './images/tribergwaterfall.jpg', description: "You're enchanted by the tranquility of the small waterfall, its gentle cascade a soothing melody." },
+    { url: './images/almedalen.jpg', description: "You're exploring the peaceful ambiance of Almedalen, enjoying its serene surroundings" },
+    { url: './images/desert.jpg', description: "You're wandering through the vast desert expanse, surrounded by endless sands." },
+    { url: './images/drottningholm.jpg', description: "You feel like royalty as you stroll through Drottningholm's majestic gardens" },
+    { url: './images/forestpath.jpg', description: 'The sun shines brightly through the trees along the forest path.' },
+    { url: './images/gothenburg.jpg', description: "Quick, move out of the way! You're blocking the pram's path!" },
+    { url: './images/greatwallofchina.jpg', description: 'The Great Wall of China sprawls out before you, a breathtaking sight.' },
+    { url: './images/junglepath.jpg', description: 'The jungle path appears almost enchanted, beckoning you forward with mystery.' },
+    { url: './images/tajmahal.jpg', description: "You're captivated by the grandeur of the Taj Mahal, lost in its beauty." },
+    { url: './images/tivoli.jpg', description: "You're swept away by the magic of Tivoli, immersed in its enchanting atmosphere." },
+    { url: './images/versailles.jpg', description: "You're awestruck by the elegance of the walkways in Versailles, feeling like royalty as you stroll." },
+    { url: './images/yellowstone.jpg', description: "You're spellbound by the spectacle of the Yellowstone geyser, marveling at its raw power" },
+    { url: './images/fuji.jpg', description: "You're mesmerized by the majestic presence of Mount Fuji, feeling its grandeur towering above you" }
 ];
 
 
@@ -130,7 +130,7 @@ function addZombiesAndCats() {
 
     for (let zombie = 0; zombie < zombieAmount; zombie++) {
         let index = indexToAdd()
-        gameArray[index].zombie = "../images/zombie2.png"
+        gameArray[index].zombie = "./images/zombie2.png"
         console.log("zombie added: " + gameArray[index].position)
     }
 
