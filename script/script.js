@@ -217,13 +217,14 @@ function movePlayer(id){
     if (hasZombieOrCat("cat")){
         drawImage("catOrZombieImg", gameArray[index].cat)
         image.style.visibility = "visible"
-        document.getElementById("description").innerHTML = "You found the Cat! Press any button to continue"
+        document.getElementById("description").innerHTML = "You found the Cat! Press any button to proceed"
         catFoundFunc()
     }
     
     if (hasZombieOrCat("zombie")){
         drawImage("catOrZombieImg", gameArray[index].zombie)
         image.style.visibility = "visible"
+        document.getElementById("description").innerHTML = "You stumbled upon the zombie, its ghastly presence sucking away one precious point of your health."
         zombieFoundFunc()
     }
 
