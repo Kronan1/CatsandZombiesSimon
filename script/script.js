@@ -55,14 +55,16 @@ async function init(){
 
 function createBoard() {
     addZombiesAndCats()
-    positionX = getRandomInt(5)
-    positionY = getRandomInt(5)
+    const index1 = indexToAdd(fieldSize)
+    const pos = gameArray[index1].position
+    positionX = pos % 5
+    positionY = Math.floor(pos / 5)
 
     drawBoard()
 
-    let index = calculateIndex(positionY, positionX)
-    drawImage("locationImg", gameArray[index].img)
-    updateDescription(gameArray[index].description)
+    let index2 = calculateIndex(positionY, positionX)
+    drawImage("locationImg", gameArray[index2].img)
+    updateDescription(gameArray[index2].description)
     updateHealth()
     catFound = false
     zombieFound = false
